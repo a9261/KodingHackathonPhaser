@@ -2581,7 +2581,7 @@ PIXI.Text.prototype.updateText = function()
     // word wrap
     // preserve original text
     if(this.style.wordWrap)outputText = this.wordWrap(this.text);
-
+    
     //split text into lines
     var lines = outputText.split(/(?:\r\n|\r|\n)/);
 
@@ -2591,7 +2591,7 @@ PIXI.Text.prototype.updateText = function()
     for (var i = 0; i < lines.length; i++)
     {
         var lineWidth = this.context.measureText(lines[i]).width;
-        lineWidths[i] = lineWidth;
+        lineWidths[i] = Math.round(lineWidth);
         maxLineWidth = Math.max(maxLineWidth, lineWidth);
     }
 
@@ -29201,7 +29201,7 @@ Phaser.GameObjectFactory.prototype = {
     * @return {Phaser.Text} The newly created text object.
     */
     text: function (x, y, text, style, group) {
-
+        console.log('29204:' + text);
         if (typeof group === 'undefined') { group = this.world; }
 
         return group.add(new Phaser.Text(this.game, x, y, text, style));
@@ -33677,7 +33677,7 @@ Phaser.Text = function (game, x, y, text, style) {
     {
         text = text.toString();
     }
-
+   
     /**
     * @property {Phaser.Game} game - A reference to the currently running Game.
     */

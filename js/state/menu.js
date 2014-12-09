@@ -49,9 +49,9 @@ window.PhaserDemo.state.menu = {
 	    this.game.load.onLoadComplete.add(this.loadComplete, this);
 
 	    this.GameName = this.game.add.text((content.game.world.centerX/2 )-100, content.game.world.centerY - 200, ' N', { font: 'bold 90pt Arial', fill: '#00FF00' });
-	    this.GameName2 = this.game.add.text((content.game.world.centerX/2)-20, content.game.world.centerY - 200, '¡D', { font: 'bold 90pt Arial', fill: '#CC0000' });
+	    this.GameName2 = this.game.add.text((content.game.world.centerX / 2) - 20, content.game.world.centerY - 200, ' ¡D', { font: 'bold 90pt Arial', fill: '#CC0000' });
 	    this.GameName3 = this.game.add.text((content.game.world.centerX /2)+50, content.game.world.centerY - 200, 'unchbox', { font: 'bold 90pt Arial', fill: '#EE7700' });
-
+	    console.log(this.GameName2.text);
 	    this.button = this.game.add.button(this.game.world.centerX -150, this.game.world.centerY, 'startbtn', 
             function () {
                 this.game.load.start();
@@ -64,6 +64,9 @@ window.PhaserDemo.state.menu = {
 	loadStart: function () {
 	    this.LoadingText = this.game.add.text(this.game.world.centerX - 90, this.game.world.centerY - 50, ' Loading ... ', { fontSize: '52px', fill: '#FFFF33' })
 	    this.button.visible = false;
+	    this.GameName.visible = false;
+	    this.GameName2.visible = false;
+	    this.GameName3.visible = false;
 	},
 	fileComplete: function (progress, cacheKey, success, totalLoaded, totalFiles) {
 	    this.LoadingText.text = progress + ' %';
@@ -344,7 +347,7 @@ function MobilecheckAnswer(sprite, pointer) {
 function showCorrectAnswer() {
 
     //content.QuestionText.text = 'Q: ' + content.Question.x + '  ' + content.Question.operator + '  ' + content.Question.y + ' = ' + content.Question.QAnswer;
-    content.QuestionText.text = 'Q: ' + '¡@¡@' + content.Question.operator + '¡@¡@= '
+    content.QuestionText.text = 'Q: ' + '       ' + content.Question.operator + '       = '
     var splistr = content.Question.QAnswer.toString().split('');
     var QtxtX = content.QuestionText.x;
     var QtxtY = content.QuestionText.y;
@@ -441,7 +444,7 @@ function randomQ(Question) {
     Question.x = x;
     Question.y = y;
     Question.operator = operator[rand];
-    Question.QText = 'Q: ' + x + '  ' + operator[rand] + '  ' + y + ' = ?';
+    Question.QText = 'Q: ' + x + '  ' + operator[rand] + '  ' + y + '    = ?';
     Question.QAnswer = ans;
 
     
@@ -498,7 +501,7 @@ function randomQ(Question) {
         AddNum(Ysplitstr[0].toString(), QtxtX + 400, QtxtY, FonType.QNum, content.QnumGroup);
     }
 
-    content.QuestionText.text = 'Q: ' + '¡@¡@' + Question.operator + '¡@¡@= ?';
+    content.QuestionText.text = 'Q: ' + '       ' + Question.operator + '        = ?';
 
 }
 function AddNum(num, x, y, type,group) {
