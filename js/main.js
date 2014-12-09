@@ -1,4 +1,4 @@
-"use strict";
+﻿"use strict";
 window.PhaserDemo = {
 	
 	// reference to Phaser.Game instance
